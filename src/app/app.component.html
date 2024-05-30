@@ -3,16 +3,27 @@
     <button class="left" (click)="onBtnClick('left')"><</button>
     <button class="right" (click)="onBtnClick('right')">></button>
   </div>
-  <div class="view">
+  <div
+    class="view"
+    appGestureDirection
+    (swipeToLeft)="onBtnClick('right')"
+    (swipeToRight)="onBtnClick('left')"
+  >
     <div class="container">
       <div class="slider" (transitionend)="onTransitionEnd($event)">
-        <div class="item" >{{items[items.length - 1]}}</div>
-        <div class="item" *ngFor="let item of items;">{{item}}</div>
-        <div class="item" >{{items[0]}}</div>
+        <div class="item">{{ items[items.length - 1] }}</div>
+        <div class="item" *ngFor="let item of items">{{ item }}</div>
+        <div class="item">{{ items[0] }}</div>
       </div>
     </div>
   </div>
   <div #itemsEle class="list">
-    <div class="item" *ngFor="let item of items; let i = index;" (click)="onItemClick(i)">{{item}}</div>
+    <div
+      class="item"
+      *ngFor="let item of items; let i = index"
+      (click)="onItemClick(i)"
+    >
+      {{ item }}
+    </div>
   </div>
 </div>
